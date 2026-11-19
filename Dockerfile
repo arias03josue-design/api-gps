@@ -10,14 +10,14 @@ WORKDIR /src
 # Primero solo los archivos de proyecto: la restauración de paquetes queda en caché
 # y solo se repite cuando cambian las dependencias.
 COPY .editorconfig Directory.Build.props Directory.Packages.props ./
-COPY src/ApiGps.Domain/ApiGps.Domain.csproj src/ApiGps.Domain/
-COPY src/ApiGps.Application/ApiGps.Application.csproj src/ApiGps.Application/
-COPY src/ApiGps.Infrastructure/ApiGps.Infrastructure.csproj src/ApiGps.Infrastructure/
-COPY src/ApiGps.Api/ApiGps.Api.csproj src/ApiGps.Api/
-RUN dotnet restore src/ApiGps.Api/ApiGps.Api.csproj
+COPY src/Domain/ApiGps.Domain.csproj src/Domain/
+COPY src/Application/ApiGps.Application.csproj src/Application/
+COPY src/Infrastructure/ApiGps.Infrastructure.csproj src/Infrastructure/
+COPY src/Api/ApiGps.Api.csproj src/Api/
+RUN dotnet restore src/Api/ApiGps.Api.csproj
 
 COPY src/ src/
-RUN dotnet publish src/ApiGps.Api/ApiGps.Api.csproj \
+RUN dotnet publish src/Api/ApiGps.Api.csproj \
         --configuration "$BUILD_CONFIGURATION" \
         --no-restore \
         --output /app/publish \

@@ -8,7 +8,7 @@
 **/*.db
 **/*.db-shm
 **/*.db-wal
-src/ApiGps.Api/data/
+src/Api/data/
 .git/
 .gitignore
 .env
