@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/ApiGps.Api/ApiGps.Api.csproj" />
+    <Project Path="src/ApiGps.Application/ApiGps.Application.csproj" />
+    <Project Path="src/ApiGps.Domain/ApiGps.Domain.csproj" />
+    <Project Path="src/ApiGps.Infrastructure/ApiGps.Infrastructure.csproj" />
+  </Folder>
+</Solution>

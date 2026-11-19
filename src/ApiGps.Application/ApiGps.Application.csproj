@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Capa de aplicación: casos de uso (CQRS), validaciones, mapeos y contratos (interfaces)
+       que la infraestructura debe implementar. Solo depende del dominio. -->
+
+  <ItemGroup>
+    <ProjectReference Include="..\ApiGps.Domain\ApiGps.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+    <!-- Mapperly es un generador de código: no se necesita en tiempo de ejecución. -->
+    <PackageReference Include="Riok.Mapperly" ExcludeAssets="runtime" PrivateAssets="all" />
+  </ItemGroup>
+
+</Project>

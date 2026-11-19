@@ -1,0 +1,20 @@
+# Archivos que no deben enviarse al contexto de compilación de Docker
+**/bin/
+**/obj/
+**/.vs/
+**/.vscode/
+**/.idea/
+**/*.user
+**/*.db
+**/*.db-shm
+**/*.db-wal
+src/ApiGps.Api/data/
+.git/
+.gitignore
+.env
+.env.*
+Dockerfile
+docker-compose*.yml
+.dockerignore
+dotnet-tools.json
+README.md

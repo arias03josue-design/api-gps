@@ -1,0 +1,32 @@
+# Despliegue de la API GPS con Docker Compose:
+#   1. Copie .env.example como .env y defina GPS_API_KEY.
+#   2. docker compose up -d --build
+services:
+  api-gps:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: api-gps:latest
+    container_name: api-gps
+    restart: unless-stopped
+    ports:
+      - "${GPS_API_PORT:-8080}:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ApiKey__Value: ${GPS_API_KEY:?Defina GPS_API_KEY en el archivo .env (ver .env.example)}
+      Swagger__Enabled: ${GPS_SWAGGER_ENABLED:-true}
+      ConnectionStrings__Database: "Data Source=/app/data/gps.db"
+    volumes:
+      # Volumen con nombre: los datos persisten aunque el contenedor se detenga, se elimine o se
+      # recree con una nueva versión de la imagen. Solo se borran de forma explícita con
+      # "docker volume rm api-gps-data" o "docker compose down -v".
+      - gps-data:/app/data
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  gps-data:
+    name: api-gps-data

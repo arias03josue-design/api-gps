@@ -1,0 +1,20 @@
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 4
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.{json,yml,yaml,csproj,props,slnx,xml}]
+indent_size = 2
+
+[*.cs]
+# Mapperly valida los mapeos en tiempo de compilación: cualquier propiedad de origen
+# o de destino que quede sin mapear (y no se ignore explícitamente) rompe la compilación.
+dotnet_diagnostic.RMG012.severity = error
+dotnet_diagnostic.RMG020.severity = error
+
+[**/Migrations/*.cs]
+generated_code = true
